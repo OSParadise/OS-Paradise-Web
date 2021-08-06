@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Card, CardTitle, Col, Row } from "reactstrap";
-import { GetGroupCompetitions } from "../API/WiseOldManApi";
+import { Card, CardTitle, Col, Row, Spinner } from "reactstrap";
+import { GetGroupCompetitions, GetGroupDetails } from "../API/WiseOldManApi";
 import welcomeBanner from "../Images/welcome-banner.png";
 import { ICompetitions } from "../Interfaces/ICompetition";
+import { IGroup } from "../Interfaces/IGroup";
 
 /**
  * Render component for the home page.
@@ -10,6 +11,7 @@ import { ICompetitions } from "../Interfaces/ICompetition";
 function Home() {
   const [ongoingCompetitions, setOngoingCompetitions] = useState<ICompetitions[]>([]);
   const [pastCompetitions, setPastCompetitions] = useState<ICompetitions[]>([]);
+  const [groupDetails, setGroupDetails] = useState<IGroup>();
 
   useEffect(() => {
     const fetchCompetitions = async () => {
@@ -19,7 +21,13 @@ function Home() {
       setPastCompetitions(data.filter((x) => new Date(x.endsAt) < new Date()));
     };
 
+    const fetchGroup = async () => {
+      const data = await GetGroupDetails();
+      setGroupDetails(data);
+    };
+
     fetchCompetitions();
+    fetchGroup();
   }, []);
 
   return (
@@ -32,21 +40,22 @@ function Home() {
       }}
     >
       <Row>
-        <Col style={{ textAlign: "center" }}>
-          <legend style={{ color: "#FFF" }}>
+        <Col style={{ textAlign: "center", color: "#FFF" }}>
+          <legend>
             Welcome to OS Paradise!{" "}
             <span role="img" aria-label="smiling face with hearts">
               🥰
             </span>
           </legend>
           <img src={welcomeBanner} alt="welcome banner" />
+          <h3 style={{ paddingTop: "20px" }}>Homeworld</h3>
+          <span>{groupDetails?.homeworld}</span>
+          <h3>Members</h3>
+          <span>{groupDetails?.memberCount}</span>
         </Col>
         <Col>
           <legend style={{ textAlign: "left", color: "#FFF" }}>
-            Ongoing Competitions{" "}
-            <span role="img" aria-label="eyes">
-              👀
-            </span>
+            Ongoing Competitions <Spinner type="grow" color="danger" style={{ width: "1.5rem", height: "1.5rem" }} />
           </legend>
           {ongoingCompetitions &&
             ongoingCompetitions.map((value) => (
