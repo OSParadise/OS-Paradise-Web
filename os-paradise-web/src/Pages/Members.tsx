@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { GetGroupMembers } from "../API/WiseOldManApi";
-import { IPlayer } from "../Interfaces/IPlayer";
+import { IPlayer } from "../Interfaces";
 
 /**
  * Render component for the members list page.
