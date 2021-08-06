@@ -1,3 +1,5 @@
+import { IProgress } from ".";
+
 export interface IPlayer {
   exp: number;
   id: number;
@@ -17,4 +19,6 @@ export interface IPlayer {
   updatedAt: string;
   role: string;
   joinedAt: string;
+  teamName: string;
+  progress: IProgress;
 }

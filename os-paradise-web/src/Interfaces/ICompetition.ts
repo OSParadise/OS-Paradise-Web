@@ -1,11 +1,14 @@
+import { IPlayer } from ".";
+
 export interface ICompetitions {
-    id: number;
-    title: string;
-    metric: string;
-    score: number;
-    verificationHash: string;
-    startsAt: string;
-    endsAt: string;
-    createdAt: string;
-    updatedAt: string;
+  id: number;
+  title: string;
+  metric: string;
+  score: number;
+  verificationHash: string;
+  startsAt: string;
+  endsAt: string;
+  createdAt: string;
+  updatedAt: string;
+  participants: IPlayer[];
 }
