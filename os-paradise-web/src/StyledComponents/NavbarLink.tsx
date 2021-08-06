@@ -7,11 +7,11 @@ const NavbarLink = style(Link)`
     color: #FFF;
     height: 100%;
     transition: background 0.1s;
+    text-decoration: none;
 
     &:hover {
         color: #FFF;
         background: #36393f;
-        text-decoration: none;
     }
 `;
 
