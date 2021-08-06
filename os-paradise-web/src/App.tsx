@@ -1,9 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import NavigationBar from "./Components/NavigationBar";
-import Error from "./Pages/Error";
-import Home from "./Pages/Home";
-import Members from "./Pages/Members";
+import { Error, Home, Members } from "./Pages";
 
 function App() {
   return (

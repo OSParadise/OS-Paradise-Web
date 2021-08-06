@@ -1,10 +1,9 @@
-import { ICompetitions } from "../Interfaces/ICompetition";
-import { IGroup } from "../Interfaces/IGroup";
-import { IPlayer } from "../Interfaces/IPlayer";
+import { ICompetitions, IGroup, IPlayer } from "../Interfaces";
 import { HandleError, HandleResponse } from "../Utilities/HelperFunctions";
+import { CONFIG } from "../Utilities/Environment";
 
-const baseUrl = "https://api.wiseoldman.net";
-const OSParadiseId = 332;
+const baseUrl = CONFIG.baseUrl;
+const OSParadiseId = CONFIG.groupId;
 
 /**
  * Gets the competitions associated with the group's Id.

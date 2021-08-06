@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { Card, CardTitle, Col, Row, Spinner } from "reactstrap";
 import { GetGroupCompetitions, GetGroupDetails } from "../API/WiseOldManApi";
 import welcomeBanner from "../Images/welcome-banner.png";
-import { ICompetitions } from "../Interfaces/ICompetition";
-import { IGroup } from "../Interfaces/IGroup";
+import { ICompetitions, IGroup } from "../Interfaces";
 
 /**
  * Render component for the home page.
