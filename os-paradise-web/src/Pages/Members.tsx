@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Card, CardFooter, CardText, CardTitle, Row } from "reactstrap";
 import { GetGroupMembers } from "../API/WiseOldManApi";
 import { IPlayer } from "../Interfaces";
+import Pagination from "../Components/Pagination";
+import MemberCard from "../Components/Members/MemberCard";
 
 /**
  * Render component for the members list page.
@@ -33,19 +34,12 @@ function Members() {
           👭
         </span>
       </legend>
-      {players &&
-        players.map((value) => (
-          <Row key={value.id}>
-            <Card body inverse style={{ backgroundColor: "#40444b", borderColor: "#333", maxWidth: "600px" }}>
-              <CardTitle tag="h5" style={{ color: "#FFF" }}>
-                {value.displayName}
-              </CardTitle>
-              <CardText>{value.role}</CardText>
-              <CardText>{value.build}</CardText>
-              <CardFooter>{value.joinedAt}</CardFooter>
-            </Card>
-          </Row>
-        ))}
+      <Pagination
+        data={players}
+        RenderComponent={MemberCard}
+        pageLimit={5}
+        dataLimit={10}
+      />
     </div>
   );
 }
