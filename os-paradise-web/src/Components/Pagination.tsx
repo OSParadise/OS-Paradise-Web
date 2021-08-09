@@ -17,7 +17,7 @@ interface IProps {
 }
 
 /**
- * Pagination wrapper.
+ * Pagination wrapper for any arbitrary set of data and associated render component.
  */
 function Pagination(props: IProps) {
   const [pages] = useState(Math.round(props.data.length / props.dataLimit));
@@ -56,9 +56,18 @@ function Pagination(props: IProps) {
         ))}
       </div>
 
-      <ReactstrapPagination>
+      <ReactstrapPagination style={{ marginLeft: "-12px" }}>
         <PaginationItem disabled={currentPage === 1}>
-          <PaginationLink onClick={handlePreviousPage} previous href="#" />
+          <PaginationLink
+            onClick={handlePreviousPage}
+            previous
+            href="#"
+            style={{
+              backgroundColor: "#40444b",
+              borderColor: "#333",
+              color: "#FFF",
+            }}
+          />
         </PaginationItem>
         {getPaginationGroup().map((item, i) => (
           <PaginationItem
@@ -66,13 +75,34 @@ function Pagination(props: IProps) {
             active={currentPage === item}
             key={i}
           >
-            <PaginationLink onClick={(e) => handlePageChange(item)} href="#">
+            <PaginationLink
+              onClick={(e) => handlePageChange(item)}
+              href="#"
+              style={{
+                backgroundColor: "#40444b",
+                borderColor: "#333",
+                color: !(item - 1 > pages)
+                  ? currentPage === item
+                    ? "#44a6c6"
+                    : "#FFF"
+                  : "#36393f",
+              }}
+            >
               {item}
             </PaginationLink>
           </PaginationItem>
         ))}
         <PaginationItem disabled={currentPage === pages}>
-          <PaginationLink onClick={handleNextPage} next href="#" />
+          <PaginationLink
+            onClick={handleNextPage}
+            next
+            href="#"
+            style={{
+              backgroundColor: "#40444b",
+              borderColor: "#333",
+              color: "#FFF",
+            }}
+          />
         </PaginationItem>
       </ReactstrapPagination>
     </>
