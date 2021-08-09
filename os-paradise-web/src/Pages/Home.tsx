@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Card, CardTitle, Col, Row, Spinner } from "reactstrap";
+import { Button, Card, CardTitle, Col, Row, Spinner } from "reactstrap";
 import { GetGroupCompetitions, GetGroupDetails } from "../API/WiseOldManApi";
 import welcomeBanner from "../Images/welcome-banner.png";
 import { ICompetitions, IGroup } from "../Interfaces";
+import { getVersion } from "../Utilities/Environment";
 
 /**
  * Render component for the home page.
@@ -38,7 +39,7 @@ function Home() {
       style={{
         maxWidth: "96%",
         margin: "auto",
-        paddingTop: "40px",
+        paddingTop: "30px",
         textAlign: "left",
       }}
     >
@@ -65,9 +66,9 @@ function Home() {
               style={{ width: "1.5rem", height: "1.5rem" }}
             />
           </legend>
-          {ongoingCompetitions &&
+          {ongoingCompetitions && ongoingCompetitions.length > 0 ? (
             ongoingCompetitions.map((value) => (
-              <Row key={value.id}>
+              <Row key={value.id} style={{ margin: "0px" }}>
                 <Card
                   body
                   inverse
@@ -83,7 +84,26 @@ function Home() {
                   />
                 </Card>
               </Row>
-            ))}
+            ))
+          ) : (
+            <Card
+              body
+              inverse
+              style={{ backgroundColor: "#40444b", borderColor: "#333" }}
+            >
+              <CardTitle tag="h5" style={{ color: "#FFF" }}>
+                Looks like the clan doesn't have anything going on at the
+                moment. Kick back and relax!
+              </CardTitle>
+              <span
+                style={{ textAlign: "center" }}
+                role="img"
+                aria-label="sparkles"
+              >
+                ✨
+              </span>
+            </Card>
+          )}
           <legend
             style={{ textAlign: "left", color: "#FFF", paddingTop: "20px" }}
           >
@@ -93,8 +113,8 @@ function Home() {
             </span>
           </legend>
           {pastCompetitions &&
-            pastCompetitions.map((value) => (
-              <Row key={value.id}>
+            pastCompetitions.slice(0, 7).map((value) => (
+              <Row key={value.id} style={{ margin: "0px" }}>
                 <Card
                   body
                   inverse
@@ -111,7 +131,15 @@ function Home() {
                 </Card>
               </Row>
             ))}
+          <div style={{ textAlign: "center", paddingTop: "10px" }}>
+            <Button style={{ backgroundColor: "#40444b", borderColor: "#333" }}>
+              See more...
+            </Button>
+          </div>
         </Col>
+      </Row>
+      <Row style={{ textAlign: "center" }}>
+        <small style={{ color: "#fff" }}>{getVersion()}</small>
       </Row>
     </div>
   );

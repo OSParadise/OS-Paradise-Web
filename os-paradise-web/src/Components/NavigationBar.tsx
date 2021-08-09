@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Nav, Navbar, NavbarBrand, NavItem } from "reactstrap";
 import logo from "../Images/logo.gif";
 import { ExternalNavbarLink } from "../StyledComponents/ExternalNavbarLink";

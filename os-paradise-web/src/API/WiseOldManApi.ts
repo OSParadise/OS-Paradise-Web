@@ -1,6 +1,6 @@
 import { ICompetitions, IGroup, IPlayer } from "../Interfaces";
-import { HandleError, HandleResponse } from "../Utilities/HelperFunctions";
 import { CONFIG } from "../Utilities/Environment";
+import { HandleError, HandleResponse } from "../Utilities/HelperFunctions";
 
 const baseUrl = CONFIG.baseUrl;
 const OSParadiseId = CONFIG.groupId;

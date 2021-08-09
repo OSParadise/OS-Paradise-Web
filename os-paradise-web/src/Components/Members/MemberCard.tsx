@@ -5,6 +5,9 @@ interface IProps {
   data: IPlayer;
 }
 
+/**
+ * Render component for a member's basic information.
+ */
 function MemberCard(props: IProps) {
   return (
     <Row>

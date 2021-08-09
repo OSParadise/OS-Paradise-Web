@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { GetGroupMembers } from "../API/WiseOldManApi";
-import { IPlayer } from "../Interfaces";
-import Pagination from "../Components/Pagination";
 import MemberCard from "../Components/Members/MemberCard";
+import Pagination from "../Components/Pagination";
+import { IPlayer } from "../Interfaces";
 
 /**
  * Render component for the members list page.
@@ -24,12 +24,12 @@ function Members() {
       style={{
         maxWidth: "96%",
         margin: "auto",
-        paddingTop: "40px",
+        paddingTop: "30px",
         textAlign: "left",
       }}
     >
       <legend style={{ textAlign: "left", color: "#FFF", paddingTop: "20px" }}>
-        Members{" "}
+        Members ({players.length}){" "}
         <span role="img" aria-label="women holding hands">
           👭
         </span>

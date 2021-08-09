@@ -3,8 +3,8 @@
  */
 function Error() {
   return (
-    <div style={{ maxWidth: "86%", margin: "auto", paddingTop: "40px" }}>
-      <legend style={{ textAlign: "left" }}>
+    <div style={{ maxWidth: "86%", margin: "auto", paddingTop: "30px" }}>
+      <legend style={{ textAlign: "left", color: "#fff" }}>
         Oops! Page not found!{" "}
         <span role="img" aria-label="crying face">
           😢
