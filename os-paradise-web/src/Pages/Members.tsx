@@ -34,12 +34,14 @@ function Members() {
           👭
         </span>
       </legend>
-      <Pagination
-        data={players}
-        RenderComponent={MemberCard}
-        pageLimit={5}
-        dataLimit={10}
-      />
+      {players && players.length > 0 && (
+        <Pagination
+          data={players}
+          RenderComponent={MemberCard}
+          pageLimit={5}
+          dataLimit={5}
+        />
+      )}
     </div>
   );
 }

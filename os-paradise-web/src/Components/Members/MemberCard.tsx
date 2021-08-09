@@ -1,7 +1,8 @@
 import { Card, CardFooter, CardText, CardTitle, Row } from "reactstrap";
+import { IPlayer } from "../../Interfaces";
 
 interface IProps {
-  data: any;
+  data: IPlayer;
 }
 
 function MemberCard(props: IProps) {

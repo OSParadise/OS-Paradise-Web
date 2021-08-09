@@ -42,8 +42,9 @@ function Pagination(props: IProps) {
   };
 
   const getPaginationGroup = () => {
-    let start =
-      Math.floor((currentPage - 1) / props.pageLimit) * props.pageLimit;
+    const middle = Math.floor(props.pageLimit / 2);
+    const start = Math.max(currentPage - props.pageLimit + middle, 0);
+
     return new Array(props.pageLimit).fill(0).map((_, idx) => start + idx + 1);
   };
 
@@ -60,7 +61,11 @@ function Pagination(props: IProps) {
           <PaginationLink onClick={handlePreviousPage} previous href="#" />
         </PaginationItem>
         {getPaginationGroup().map((item, i) => (
-          <PaginationItem active={currentPage === item} key={i}>
+          <PaginationItem
+            disabled={item - 1 > pages}
+            active={currentPage === item}
+            key={i}
+          >
             <PaginationLink onClick={(e) => handlePageChange(item)} href="#">
               {item}
             </PaginationLink>
