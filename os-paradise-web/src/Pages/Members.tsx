@@ -28,20 +28,13 @@ function Members() {
         textAlign: "left",
       }}
     >
-      <legend style={{ textAlign: "left", color: "#FFF", paddingTop: "20px" }}>
+      <legend style={{ textAlign: "left", color: "#FFF", marginLeft: "-12x" }}>
         Members ({players.length}){" "}
         <span role="img" aria-label="women holding hands">
           👭
         </span>
       </legend>
-      {players && players.length > 0 && (
-        <Pagination
-          data={players}
-          RenderComponent={MemberCard}
-          pageLimit={5}
-          dataLimit={5}
-        />
-      )}
+      {players && players.length > 0 && <Pagination data={players} RenderComponent={MemberCard} pageLimit={5} dataLimit={8} />}
     </div>
   );
 }

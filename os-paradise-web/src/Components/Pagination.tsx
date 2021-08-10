@@ -1,9 +1,5 @@
 import { useState } from "react";
-import {
-  Pagination as ReactstrapPagination,
-  PaginationItem,
-  PaginationLink,
-} from "reactstrap";
+import { Pagination as ReactstrapPagination, PaginationItem, PaginationLink } from "reactstrap";
 
 interface IRenderComponentProps {
   data: any;
@@ -56,7 +52,7 @@ function Pagination(props: IProps) {
         ))}
       </div>
 
-      <ReactstrapPagination style={{ marginLeft: "-12px" }}>
+      <ReactstrapPagination style={{ marginLeft: "-12px", paddingTop: "10px" }}>
         <PaginationItem disabled={currentPage === 1}>
           <PaginationLink
             onClick={handlePreviousPage}
@@ -70,22 +66,14 @@ function Pagination(props: IProps) {
           />
         </PaginationItem>
         {getPaginationGroup().map((item, i) => (
-          <PaginationItem
-            disabled={item - 1 > pages}
-            active={currentPage === item}
-            key={i}
-          >
+          <PaginationItem disabled={item - 1 > pages} active={currentPage === item} key={i}>
             <PaginationLink
               onClick={(e) => handlePageChange(item)}
               href="#"
               style={{
                 backgroundColor: "#40444b",
                 borderColor: "#333",
-                color: !(item - 1 > pages)
-                  ? currentPage === item
-                    ? "#44a6c6"
-                    : "#FFF"
-                  : "#36393f",
+                color: !(item - 1 > pages) ? (currentPage === item ? "#44a6c6" : "#FFF") : "#36393f",
               }}
             >
               {item}
