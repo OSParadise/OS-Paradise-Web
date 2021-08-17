@@ -1,7 +1,6 @@
-import { faUtensilSpoon } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Card, CardTitle, Row } from "reactstrap";
 import { IPlayer } from "../../Interfaces";
+import { CapitalizeFirstLetter } from "../../Utilities/HelperFunctions";
 
 interface IProps {
   data: IPlayer;
@@ -25,8 +24,15 @@ function MemberCard(props: IProps) {
         }}
       >
         <CardTitle tag="h5" style={{ color: "#FFF" }}>
-          <img src={`https://wiseoldman.net/img/runescape/icons_small/${props.data.type}.png`} width="14px" alt={props.data.type} title={props.data.type} />{" "}
-          {props.data.displayName} {props.data.role === "leader" && <FontAwesomeIcon icon={faUtensilSpoon} title="Leader" />}
+          <img
+            src={`https://wiseoldman.net/img/runescape/roles/${CapitalizeFirstLetter(
+              props.data.role
+            )}.png`}
+            width="20px"
+            alt={props.data.role}
+            title={props.data.role}
+          />{" "}
+          {props.data.displayName}
         </CardTitle>
         <small>Joined: {joinDate.toLocaleDateString()}</small>
       </Card>

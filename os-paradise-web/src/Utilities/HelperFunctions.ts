@@ -15,3 +15,12 @@ export function HandleError(error: any): void {
 export async function HandleResponse(response: Response): Promise<any> {
   return response.json();
 }
+
+/**
+ * Capitalizes the first letter for any given string.
+ *
+ * @param string Input string.
+ */
+export function CapitalizeFirstLetter(string: string) {
+  return (string && string.charAt(0).toUpperCase() + string.slice(1)) || "";
+}
