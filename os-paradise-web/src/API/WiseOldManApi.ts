@@ -1,4 +1,4 @@
-import { ICompetitions, IGroup, IPlayer } from "../Interfaces";
+import { ICompetitions, IGroup, IMonthlyTop, IPlayer } from "../Interfaces";
 import { CONFIG } from "../Utilities/Environment";
 import { HandleError, HandleResponse } from "../Utilities/HelperFunctions";
 
@@ -47,4 +47,20 @@ export async function GetGroupMembers(): Promise<IPlayer[]> {
   }
 
   return [];
+}
+
+/**
+ * Gets the clan's monthly top player.
+ */
+export async function GetMonthlyTopPlayer(): Promise<IMonthlyTop> {
+  try {
+    const response = await fetch(
+      `${baseUrl}/groups/${OSParadiseId}/monthly-top`
+    );
+    return HandleResponse(response);
+  } catch (error: any) {
+    HandleError(error);
+  }
+
+  return {} as IMonthlyTop;
 }

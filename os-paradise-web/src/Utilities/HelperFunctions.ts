@@ -24,3 +24,15 @@ export async function HandleResponse(response: Response): Promise<any> {
 export function CapitalizeFirstLetter(string: string) {
   return (string && string.charAt(0).toUpperCase() + string.slice(1)) || "";
 }
+
+/**
+ * Returns the comma formatted version of a number.
+ * https://stackoverflow.com/a/2901298
+ *
+ * @param number Input number.
+ */
+export function NumberWithCommas(number: number | undefined) {
+  return (
+    number && number.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+  );
+}
