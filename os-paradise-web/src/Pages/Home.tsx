@@ -9,7 +9,6 @@ import welcomeBanner from "../Images/welcome-banner.png";
 import larry from "../Images/larry.png";
 import { ICompetitions, IGroup, IMonthlyTop } from "../Interfaces";
 import { getVersion } from "../Utilities/Environment";
-import { NumberWithCommas } from "../Utilities/HelperFunctions";
 
 /**
  * Render component for the home page.
@@ -70,9 +69,9 @@ function Home() {
           <h3>Members</h3>
           <span>{groupDetails?.memberCount}</span>
           <h3>Monthly Top (Most Poggers) Player</h3>
-          <span>{monthlyTopPlayer?.player.displayName}</span>
+          <strong>{monthlyTopPlayer?.player.displayName}</strong>
           <br />
-          <span>{NumberWithCommas(monthlyTopPlayer?.gained)} exp gained!</span>
+          <span>{monthlyTopPlayer?.gained.toLocaleString()} exp gained!</span>
         </Col>
         <Col>
           <legend style={{ textAlign: "left", color: "#FFF" }}>
